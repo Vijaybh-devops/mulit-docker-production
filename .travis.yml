@@ -3,22 +3,21 @@ services:
   - docker
 
 before_install:
-  - docker build -t vijaybh/multi-docker  -f ./client/Dockerfile.dev ./client
+  - docker build -t vijaybhdevops/multi-docker  -f ./client/Dockerfile.dev ./client
 
 script:
-        # - echo "$docker_password" | docker login -u "$docker_id" --password-stdin
-  - docker run -it -e CI=true vijaybh/multi-docker npm run test 
+  - docker run -it -e CI=true vijaybhdevops/multi-docker npm run test 
 
 after_sucess:
-  - docker build -t vijaybh-devops/multi-client  ./client
-  - docker build -t vijaybh-devops/multi-nginx  ./nginx
-  - docker build -t vijaybh-devops/multi-server  ./server
-  - docker build -t vijaybh-devops/multi-worker  ./worker
+  - docker build -t vijaybhdevops/multi-client  ./client
+  - docker build -t vijaybhdevops/multi-nginx  ./nginx
+  - docker build -t vijaybhdevops/multi-server  ./server
+  - docker build -t vijaybhdevops/multi-worker  ./worker
 
 # Pushing the file into Docker hub
   - echo "$docker_password" | docker login -u "$docker_id" --password-stdin
-  - docker push vijaybh-devops/multi-client
-  - docker push vijaybh-devops/multi-nginx
-  - docker push vijaybh-devops/multi-server
-  - docker push vijaybh-devops/multi-worker
+  - docker push vijaybhdevops/multi-client
+  - docker push vijaybhdevops/multi-nginx
+  - docker push vijaybhdevops/multi-server
+  - docker push vijaybhdevops/multi-worker
     
