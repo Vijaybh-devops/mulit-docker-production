@@ -3,11 +3,11 @@ services:
   - docker
 
 before_install:
-  - docker build -t vijaybhdevops/multi-docker  -f ./client/Dockerfile.dev ./client
+  - docker build -t multi-docker  -f ./client/Dockerfile.dev ./client
 
 script:
-  - echo "$docker_password" | docker login -u "$docker_id" --password-stdin
-  - docker run -e CI=true vijaybhdevops/mulit-docker npm test 
+        #  - echo "$docker_password" | docker login -u "$docker_id" --password-stdin
+  - docker run -e CI=true mulit-docker npm test 
 
 after_sucess:
   - docker build -t vijaybh-devops/multi-client  ./client
