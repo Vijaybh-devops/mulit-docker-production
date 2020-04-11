@@ -7,7 +7,7 @@ before_install:
 
 script:
         # - echo "$docker_password" | docker login -u "$docker_id" --password-stdin
-  - docker run -e CI=true mulit-docker npm run test 
+  - docker run -it -e CI=true mulit-docker npm run test 
 
 after_sucess:
   - docker build -t vijaybh-devops/multi-client  ./client
