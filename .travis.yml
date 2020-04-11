@@ -15,4 +15,10 @@ after_sucess:
   - docker build -t vijaybh-devops/multi-server  ./server
   - docker build -t vijaybh-devops/multi-worker  ./worker
 
-
+# Pushing the file into Docker hub
+  - echo "$docker_password" | docker login -u "$docker_id" --password-stdin
+  - docker push vijaybh-devops/multi-client
+  - docker push vijaybh-devops/multi-nginx
+  - docker push vijaybh-devops/multi-server
+  - docker push vijaybh-devops/multi-worker
+    
